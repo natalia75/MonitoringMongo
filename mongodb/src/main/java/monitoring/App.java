@@ -6,6 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import monitoring.config.MongoDbConfig;
 import monitoring.data.CollectionCounters;
+import monitoring.data.ServerCounters;
 import org.bson.Document;
 
 import java.io.BufferedReader;
@@ -33,12 +34,14 @@ public class App
 
         Document stats = client.getDatabase().runCommand(new Document("collStats","restaurants"));
         CollectionCounters firstCounter = new CollectionCounters("restaurants", new Date(),stats);
-        System.out.println("size: " + firstCounter.getSize());
+        System.out.println("firstCounter: " + firstCounter.toString());
         System.out.println(stats.toJson());
         System.out.println(stats.get("size"));
 
         Document serverStatus = client.getDatabase().runCommand(new Document("serverStatus","1"));
+        ServerCounters sc = new ServerCounters(new Date(),serverStatus);
         System.out.println(serverStatus.toJson());
+        System.out.println(sc.toString());
 
         Process mongoTop = Runtime.getRuntime().exec("C:\\Program Files\\MongoDB\\Server\\3.6\\bin\\mongotop.exe");
         BufferedReader input = new BufferedReader(new InputStreamReader(mongoTop.getInputStream()));

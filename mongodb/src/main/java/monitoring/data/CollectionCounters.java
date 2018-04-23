@@ -2,6 +2,8 @@ package monitoring.data;
 
 import org.bson.Document;
 import java.util.Date;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class CollectionCounters {
     private String collectionName;
@@ -11,23 +13,33 @@ public class CollectionCounters {
     private int avgObjSize;
     private int storageSize;
     private int nindexes;
+    private Map<String,String> indexes;
     private int totalIndexSize;
     private int transactionUpdateConflict;
-
 
 
     @Override
     public String toString() {
         return "CollectionCounters{" +
                 "collectionName='" + collectionName + '\'' +
+                ", timeStamp=" + timeStamp +
                 ", size=" + size +
                 ", count=" + count +
                 ", avgObjSize=" + avgObjSize +
                 ", storageSize=" + storageSize +
                 ", nindexes=" + nindexes +
+                ", indexes=" + indexes +
                 ", totalIndexSize=" + totalIndexSize +
                 ", transactionUpdateConflict=" + transactionUpdateConflict +
                 '}';
+    }
+
+    public Map<String, String> getIndexes() {
+        return indexes;
+    }
+
+    public void setIndexes(Map<String, String> indexes) {
+        this.indexes = indexes;
     }
 
     public String getCollectionName() {
@@ -104,6 +116,7 @@ public class CollectionCounters {
 
 
     public CollectionCounters(String collectionName, Date timeStamp, Document document) {
+        indexes = new Hashtable<String, String>();
         this.collectionName = collectionName;
         this.timeStamp = timeStamp;
         this.size = document.getInteger("size");
@@ -112,6 +125,13 @@ public class CollectionCounters {
         this.storageSize = document.getInteger("storageSize");
         this.nindexes = document.getInteger("nindexes");
         this.totalIndexSize = document.getInteger("totalIndexSize");
+        if(nindexes>0){
+            Document doc = (Document)document.get("indexSizes");
+            for (String key:doc.keySet()
+                 ) {
+                indexes.put(key,doc.getInteger(key).toString());
+            }
+        }
     }
 
 
