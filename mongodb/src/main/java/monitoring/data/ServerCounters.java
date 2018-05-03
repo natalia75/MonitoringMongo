@@ -12,7 +12,7 @@ public class ServerCounters {
     private String host;
     private String version;
     private String process;
-    private String pid;
+    private long pid;
     private double uptime;
     private int connectionsCurrent;
     private int connectionsAvailable;
@@ -101,11 +101,11 @@ public class ServerCounters {
         this.process = process;
     }
 
-    public String getPid() {
+    public long getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
+    public void setPid(long pid) {
         this.pid = pid;
     }
 
@@ -331,7 +331,7 @@ public class ServerCounters {
         this.host = document.getString("host");
         this.version = document.getString("version");
         this.process = document.getString("process");
-        this.pid = ((Document)document.get("pid")).getString("$NumberLong");
+        this.pid = document.getLong("pid");
         this.uptime = document.getDouble("uptime");
         this.connectionsCurrent = ((Document)document.get("connections")).getInteger("current");
         this.connectionsAvailable = ((Document)document.get("connections")).getInteger("available");
@@ -349,15 +349,15 @@ public class ServerCounters {
         this.activeClientsReaders = ((Document)globalLock.get("activeClients")).getInteger("readers");
         this.activeClientsWriters = ((Document)globalLock.get("activeClients")).getInteger("writers");
         Document network = (Document)document.get("network");
-        this.numRequests = ((Document)network.get("numRequests")).getLong("$NumberLong");
+        this.numRequests = network.getLong("numRequests");
         Document opLatencies = (Document)document.get("opLatencies");
         this.readersLatency = ((Document)opLatencies.get("reads")).getLong("latency");
         this.writersLatency = ((Document)opLatencies.get("writes")).getLong("latency");
         this.commandsLatency = ((Document)opLatencies.get("commands")).getLong("latency");
-        this.opCountersInsert = ((Document)document.get("opcunters")).getInteger("insert");
-        this.opCountersQuery = ((Document)document.get("opcunters")).getInteger("query");
-        this.opCountersUpdate = ((Document)document.get("opcunters")).getInteger("update");
-        this.opCountersDelete = ((Document)document.get("opcunters")).getInteger("delete");
+        this.opCountersInsert = ((Document)document.get("opcounters")).getInteger("insert");
+        this.opCountersQuery = ((Document)document.get("opcounters")).getInteger("query");
+        this.opCountersUpdate = ((Document)document.get("opcounters")).getInteger("update");
+        this.opCountersDelete = ((Document)document.get("opcounters")).getInteger("delete");
         this.memBits =((Document)document.get("mem")).getInteger("bits");
         this.memResident =((Document)document.get("mem")).getInteger("resident");
         this.memVirtual =((Document)document.get("mem")).getInteger("virtual");
