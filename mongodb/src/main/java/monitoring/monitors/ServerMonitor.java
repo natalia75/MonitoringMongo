@@ -24,10 +24,15 @@ public class ServerMonitor implements Runnable  {
     private Date lastCountersReadtime;
 
 
-    public ServerMonitor(int period, int historySize) {
+
+    public List<ServerCounters> getCounters() {
+        return counters;
+    }
+
+    public ServerMonitor(int period, int historySize, List<ServerCounters> counters) {
         this.period = period;
         this.historySize = historySize;
-        counters = new ArrayList<ServerCounters>();
+        this.counters = counters;
         client = new DatabaseClient(databaseConfig);
         lastCountersReadtime = new Date();
     }
