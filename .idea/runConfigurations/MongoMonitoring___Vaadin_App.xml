@@ -24,6 +24,8 @@
         </MavenRunnerParameters>
       </option>
     </MavenSettings>
-    <method />
+    <method>
+      <option name="Maven.BeforeRunTask" enabled="true" file="D:\project\MonitoringMongo\mongodb/pom.xml" goal="package" />
+    </method>
   </configuration>
 </component>

@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Backend &amp; Vaadin App" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
+    <toRun type="Application" name="Backend App" />
+    <toRun type="MavenRunConfiguration" name="MongoMonitoring - Vaadin App" />
+    <method />
+  </configuration>
+</component>
