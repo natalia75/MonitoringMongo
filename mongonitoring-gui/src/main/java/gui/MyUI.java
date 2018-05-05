@@ -3,6 +3,7 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
@@ -22,13 +23,23 @@ import monitoring.App;
 @Theme("mytheme")
 public class MyUI extends UI {
 
+    Navigator navigator;
+    protected static final String MAINVIEW = "main";
+
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+
+
         try {
+            //todo: quartz
             App.main(new String[0]);
         } catch (java.io.IOException e){
                 System.out.println("ple");
         }
+
+        navigator = new Navigator(this, this);
+
+        navigator.addView("", new MainView());
 
         final VerticalLayout layout = new VerticalLayout();
         
