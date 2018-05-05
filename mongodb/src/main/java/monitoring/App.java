@@ -1,23 +1,12 @@
 package monitoring;
 
-import com.mongodb.*;
-import com.mongodb.client.ListCollectionsIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import monitoring.config.MongoDbConfig;
-import monitoring.data.CollectionCounters;
 import monitoring.data.ServerCounters;
 import monitoring.monitors.ServerMonitor;
-import org.bson.Document;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Hello world!
@@ -29,7 +18,7 @@ public class App
 
     public static void main( String[] args ) throws IOException {
 
-        System.out.println( "Hello World!" );
+        System.out.println( "Hello World from backed!" );
 
         databaseConfig = new MongoDbConfig("localhost",27017,"test");
 

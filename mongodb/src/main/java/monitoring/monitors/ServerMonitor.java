@@ -2,7 +2,6 @@ package monitoring.monitors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sun.deploy.util.SessionState;
 import monitoring.DatabaseClient;
 import monitoring.data.ServerCounters;
 import org.bson.Document;
@@ -10,7 +9,6 @@ import org.bson.Document;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
