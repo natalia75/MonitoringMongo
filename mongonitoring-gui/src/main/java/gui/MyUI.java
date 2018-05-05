@@ -4,13 +4,10 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 import monitoring.App;
 
 /**
@@ -22,24 +19,25 @@ import monitoring.App;
  */
 @Theme("mytheme")
 public class MyUI extends UI {
-
-    Navigator navigator;
+    private Navigator navigator;
+    private MenuManager menuManager;
     protected static final String MAINVIEW = "main";
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-
-
         try {
             //todo: quartz
             App.main(new String[0]);
         } catch (java.io.IOException e){
-                System.out.println("ple");
+                System.out.println(e.getMessage());
         }
+        ComponentContainer cc = new VerticalLayout();
+        navigator = new Navigator(this, new Navigator.ComponentContainerViewDisplay(cc));
 
-        navigator = new Navigator(this, this);
-
-        navigator.addView("", new MainView());
+        navigator.addView("", new MainView(""));
+        navigator.addView("test1", new MainView("test1"));
+        navigator.addView("test2", new MainView("test2"));
+        menuManager = new MenuManager(navigator, cc );
 
         final VerticalLayout layout = new VerticalLayout();
         
@@ -53,8 +51,7 @@ public class MyUI extends UI {
         });
         
         layout.addComponents(name, button);
-        
-        setContent(layout);
+        setContent(menuManager);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
