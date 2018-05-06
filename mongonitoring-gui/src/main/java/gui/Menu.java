@@ -4,6 +4,10 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
+import gui.monitoringViews.MonitoringView;
+import gui.monitoringViews.MonitoringViews;
+
+import java.util.Arrays;
 
 import static gui.Setup.setup;
 
@@ -17,6 +21,14 @@ public class Menu extends VerticalLayout {
         vl.setHeightUndefined();
         vl.setMargin(false);
     });
+
+
+    public Button addMenuBtnAndRegister(MonitoringViews view){
+        String path = view.getPath();
+        MonitoringView mv = view.getMonitoringView();
+        navigator.addView(path, mv);
+        return addMenuBtn(mv.getGuiName(), path);
+    }
 
     public Button addMenuBtn(String caption, String path){
         return setup(
@@ -43,5 +55,8 @@ public class Menu extends VerticalLayout {
         }));
         addMenuBtn("MenuItem1", "test1");
         addMenuBtn("MenuItem2", "test2");
+        for( MonitoringViews mv: MonitoringViews.values()){
+            addMenuBtnAndRegister(mv);
+        }
     }
 }

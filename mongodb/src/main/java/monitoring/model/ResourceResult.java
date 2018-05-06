@@ -7,17 +7,23 @@ public class ResourceResult<T>{
     private String databaseName;
     private T value;
     private RenderingType type;
+    private Class<T> valueType;
 
 
-    public ResourceResult(String key, T value) {
-        this(key, key, value, RenderingType.DEFAULT);
+    public ResourceResult(String key, T value, Class<T> valueType ) {
+        this(key, key, value, RenderingType.DEFAULT, valueType);
     }
 
-    public ResourceResult(String key, String databaseName, T value, RenderingType renderingType) {
+    public ResourceResult(String key, String databaseName, T value, RenderingType renderingType, Class<T> valueType) {
         this.key = key;
         this.databaseName = databaseName;
         this.value = value;
         this.type = renderingType;
+        this.valueType = valueType;
+    }
+
+    public Class<T> getValueType() {
+        return valueType;
     }
 
     public String getKey() {

@@ -1,7 +1,9 @@
 package monitoring.model;
 
 public enum RenderingType {
-    BasicKeyValue;
+    BasicKeyValue,
+    MapKeyValue;
 
     public static RenderingType DEFAULT = BasicKeyValue;
+
 }

@@ -1,5 +1,5 @@
 package monitoring.model;
 
-interface ResourceGetter<T> {
+public interface ResourceGetter<T> {
     T get();
 }

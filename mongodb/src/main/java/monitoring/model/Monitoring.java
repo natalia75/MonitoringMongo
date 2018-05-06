@@ -12,7 +12,7 @@ public class Monitoring {
         this.resources = resources;
     }
 
-    MonitoringResult toResult(){
+    public MonitoringResult toResult(){
         List<ResourceResult> results = resources.stream().map(Resource::result).collect(Collectors.toList());
         return new MonitoringResult(monitoringName, results);
     }

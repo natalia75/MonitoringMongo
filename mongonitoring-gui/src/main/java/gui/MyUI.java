@@ -10,6 +10,8 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import monitoring.App;
 
+import static gui.Setup.setup;
+
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
  * (or tab) or some part of an HTML page where a Vaadin application is embedded.
@@ -31,7 +33,7 @@ public class MyUI extends UI {
         } catch (java.io.IOException e){
                 System.out.println(e.getMessage());
         }
-        ComponentContainer cc = new VerticalLayout();
+        ComponentContainer cc = setup(new VerticalLayout(), VerticalLayout::setSizeFull);
         navigator = new Navigator(this, new Navigator.ComponentContainerViewDisplay(cc));
 
         navigator.addView("", new MainView(""));

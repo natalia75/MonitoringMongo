@@ -5,17 +5,23 @@ public class Resource<T> {
     private String dataBaseName;
     private ResourceGetter<T> resourceGetter;
     private RenderingType renderingType;
+    private final Class<T> type;
 
-    public Resource(String guiName, String dataBaseName, ResourceGetter<T> resourceGetter, RenderingType renderingType) {
+    public Resource(String guiName, String dataBaseName, ResourceGetter<T> resourceGetter, RenderingType renderingType, Class<T> tClass) {
         this.guiName = guiName;
         this.dataBaseName = dataBaseName;
         this.resourceGetter = resourceGetter;
         this.renderingType = renderingType;
+        this.type = tClass;
     }
 
-    public Resource(String name, ResourceGetter<T> resourceGetter, RenderingType renderingType) {
-        this(name, name, resourceGetter, renderingType);
+    public Resource(String name, ResourceGetter<T> resourceGetter, RenderingType renderingType, Class<T> tClass) {
+        this(name, name, resourceGetter, renderingType, tClass);
     }
+    public Resource(String name, ResourceGetter<T> resourceGetter, Class<T> tClass) {
+        this(name, name, resourceGetter, RenderingType.DEFAULT, tClass);
+    }
+
 
     public String getGuiName() {
         return guiName;
@@ -33,7 +39,11 @@ public class Resource<T> {
         return renderingType;
     }
 
+    public Class<T> getType() {
+        return type;
+    }
+
     public ResourceResult<T> result(){
-        return new ResourceResult<T>(guiName, dataBaseName, resourceGetter.get(), renderingType);
+        return new ResourceResult<T>(guiName, dataBaseName, resourceGetter.get(), renderingType, type);
     }
 }

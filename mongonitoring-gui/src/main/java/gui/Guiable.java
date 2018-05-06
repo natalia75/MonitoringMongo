@@ -1,7 +1,8 @@
 package gui;
 
 import com.vaadin.ui.Component;
+import monitoring.model.ResourceResult;
 
 public interface Guiable {
-    public Component toGui(Object resource);
+    public Component toGui(ResourceResult resource);
 }
