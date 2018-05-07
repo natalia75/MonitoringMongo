@@ -1,0 +1,156 @@
+[
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:49:21 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:49:27 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:49:33 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:49:39 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:49:45 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:49:51 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:49:57 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:50:03 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:50:09 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:50:15 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  },
+  {
+    "collectionName": "restaurants",
+    "timeStamp": "May 7, 2018 11:50:21 PM",
+    "size": 10624215,
+    "count": 25359,
+    "avgObjSize": 418,
+    "storageSize": 4669440,
+    "nindexes": 1,
+    "indexes": {
+      "_id_": "237568"
+    },
+    "totalIndexSize": 237568,
+    "transactionUpdateConflict": 0
+  }
+]

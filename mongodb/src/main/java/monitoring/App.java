@@ -2,6 +2,7 @@ package monitoring;
 
 import monitoring.config.MongoDbConfig;
 import monitoring.data.ServerCounters;
+import monitoring.monitors.CollectionMonitor;
 import monitoring.monitors.ServerMonitor;
 import monitoring.services.MongoService;
 
@@ -25,7 +26,7 @@ public class App
         Thread serverMonitor = new Thread(new ServerMonitor(1,10,serverCounters));
 
         serverMonitor.start();
-
+        Thread restaurantsMonitor = new Thread(new CollectionMonitor(5,10,"restaurants"));
+        restaurantsMonitor.start();
     }
-
 }
