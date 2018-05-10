@@ -17,7 +17,7 @@ import static monitoring.App.databaseConfig;
 
 public class CollectionMonitor implements Runnable{
 
-    int period; //na ile monitor idzie spać
+    int period;
     int historySize;
     private DatabaseClient client;
     List<CollectionCounters> counters;

@@ -2,13 +2,13 @@ package monitoring.monitors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import monitoring.DatabaseClient;
 import monitoring.data.ServerCounters;
 import org.bson.Document;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,12 +27,13 @@ public class ServerMonitor implements Runnable  {
         return counters;
     }
 
-    public ServerMonitor(int period, int historySize, List<ServerCounters> counters) {
+    public ServerMonitor(int period, int historySize) {
         this.period = period;
         this.historySize = historySize;
-        this.counters = counters;
+        this.counters = new ArrayList<>();
         client = new DatabaseClient(databaseConfig);
         lastCountersReadtime = new Date();
+        loadHistoryToFile();
     }
 
     private void getNewCounters(){
@@ -60,6 +61,26 @@ public class ServerMonitor implements Runnable  {
                 }
             }
         }
+    }
+
+    private void loadHistoryToFile(){
+        String historyString = "";
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader("ServerCounters.JSON"));
+            StringBuilder builder = new StringBuilder();
+            String line = reader.readLine();
+            while(line!=null){
+                builder.append(line);
+                line = reader.readLine();
+            }
+            historyString = builder.toString();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        Gson gson = new GsonBuilder().create();
+        ArrayList<ServerCounters> c = gson.fromJson(historyString,new TypeToken<ArrayList<ServerCounters>>(){}.getType());
+        counters.addAll(c);
     }
 
     private void saveToFile(){

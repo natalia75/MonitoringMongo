@@ -22,10 +22,9 @@ public class App
     public static void main( String[] args ) throws IOException {
         System.out.println( "Hello World from backed!" );
 
-        List<ServerCounters> serverCounters = new ArrayList<ServerCounters>();
-        Thread serverMonitor = new Thread(new ServerMonitor(1,10,serverCounters));
-
+        Thread serverMonitor = new Thread(new ServerMonitor(30,10));
         serverMonitor.start();
+
         Thread restaurantsMonitor = new Thread(new CollectionMonitor(5,10,"restaurants"));
         restaurantsMonitor.start();
     }
