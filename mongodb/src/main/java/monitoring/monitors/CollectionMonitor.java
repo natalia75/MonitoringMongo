@@ -2,12 +2,10 @@ package monitoring.monitors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import monitoring.DatabaseClient;
 import monitoring.data.CollectionCounters;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +30,7 @@ public class CollectionMonitor implements Runnable{
         client = new DatabaseClient(databaseConfig);
         lastCountersReadTime = new Date();
         counters = new ArrayList<>();
+        loadHistoryToFile();
     }
 
     private void getNewCounters(){
@@ -61,6 +60,28 @@ public class CollectionMonitor implements Runnable{
             }
 
         }
+    }
+
+    private void loadHistoryToFile(){
+        String historyString = "";
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(collectionName + ".JSON"));
+            StringBuilder builder = new StringBuilder();
+            String line = reader.readLine();
+            while(line!=null){
+                builder.append(line);
+                line = reader.readLine();
+            }
+            historyString = builder.toString();
+            System.out.println(historyString);
+            Gson gson = new GsonBuilder().create();
+            ArrayList<CollectionCounters> c = gson.fromJson(historyString,new TypeToken<ArrayList<CollectionCounters>>(){}.getType());
+            counters.addAll(c);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
     private void saveToFile(){

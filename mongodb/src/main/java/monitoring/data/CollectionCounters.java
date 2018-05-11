@@ -116,7 +116,7 @@ public class CollectionCounters {
 
 
     public CollectionCounters(String collectionName, Date timeStamp, Document document) {
-        indexes = new Hashtable<String, String>();
+        this.indexes = new Hashtable<String, String>();
         this.collectionName = collectionName;
         this.timeStamp = timeStamp;
         this.size = document.getInteger("size");

@@ -74,13 +74,15 @@ public class ServerMonitor implements Runnable  {
                 line = reader.readLine();
             }
             historyString = builder.toString();
+
+            Gson gson = new GsonBuilder().create();
+            ArrayList<ServerCounters> c = gson.fromJson(historyString,new TypeToken<ArrayList<ServerCounters>>(){}.getType());
+            counters.addAll(c);
         }catch(Exception e){
             e.printStackTrace();
         }
 
-        Gson gson = new GsonBuilder().create();
-        ArrayList<ServerCounters> c = gson.fromJson(historyString,new TypeToken<ArrayList<ServerCounters>>(){}.getType());
-        counters.addAll(c);
+
     }
 
     private void saveToFile(){
