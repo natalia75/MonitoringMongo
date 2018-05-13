@@ -1,0 +1,15 @@
+gui\MyUI.class
+gui\MenuManager.class
+gui\monitoringViews\CollectionMonitoringView.class
+gui\Setup.class
+gui\Menu.class
+gui\MyUI$MyUIServlet.class
+gui\monitoringViews\CollectionResolver.class
+gui\monitoringViews\MonitoringView.class
+gui\monitoringViews\RenderMap.class
+gui\MainView.class
+gui\Guiable.class
+gui\KeyValueResource.class
+gui\GuiCommons.class
+gui\monitoringViews\MonitoringViews.class
+gui\monitoringViews\RenderMap$1.class
