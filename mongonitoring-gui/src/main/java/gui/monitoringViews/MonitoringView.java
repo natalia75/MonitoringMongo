@@ -39,17 +39,40 @@ public class MonitoringView extends VerticalLayout implements View {
 
     protected GridLayout buildGrid(){
         final int rows = monitoringResult.getResourceResults().size();
-        return setup(new GridLayout(3, rows), gridLayout -> {
+        return setup(new GridLayout(5, rows), gridLayout -> {
             gridLayout.setMargin(false);
             gridLayout.setSizeFull();
             VerticalLayout separator = new VerticalLayout();
-            separator.setWidth(40, Unit.PIXELS);
+            separator.setWidth(20, Unit.PIXELS);
+            VerticalLayout separator2 = new VerticalLayout();
+            separator2.setWidth(20, Unit.PIXELS);
             gridLayout.addComponent(separator, 1, 0, 1, rows - 1);
+            gridLayout.addComponent(separator2, 3, 0, 3, rows - 1);
             int i = 0;
             for (ResourceResult resourceResult : monitoringResult.getResourceResults()) {
                 KeyValueResource kvr = MonitoringViews.resourceToGui(resourceResult);
                 gridLayout.addComponent(kvr.getKey(), 0, i);
                 gridLayout.addComponent(kvr.getValue(), 2, i);
+                final int index = i;
+                if(resourceResult.getValueType() == Double.class){
+                    Button open = new Button("Open historical monitoring");
+                    open.addClickListener(event -> {
+                        ChartWindow sub = new ChartWindow(resourceResult.getKey(), resourceResult);
+                        // Add it to the root component
+                        UI.getCurrent().addWindow(sub);
+                    });
+                    gridLayout.addComponent(open, 4, index);
+                }
+                if(resourceResult.getValueType() == Integer.class){
+                    Button open = new Button("Open historical monitoring");
+                    open.addClickListener(event -> {
+                        ChartWindow sub = new ChartWindow(resourceResult.getKey(), resourceResult);
+                        // Add it to the root component
+                        UI.getCurrent().addWindow(sub);
+                    });
+                    gridLayout.addComponent(open, 4, index);
+                }
+
                 i++;
             }
         });
