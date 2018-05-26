@@ -5,6 +5,8 @@ D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\Guiable.java
 D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\monitoringViews\RenderMap.java
 D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\monitoringViews\MonitoringViews.java
 D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\MenuManager.java
+D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\monitoringViews\Chart.java
+D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\monitoringViews\ChartWindow.java
 D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\Menu.java
 D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\MainView.java
 D:\project\MonitoringMongo\mongonitoring-gui\src\main\java\gui\Setup.java

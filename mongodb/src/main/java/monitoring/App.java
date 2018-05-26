@@ -15,14 +15,16 @@ public class App
 {
     public static MongoDbConfig databaseConfig = new MongoDbConfig("localhost",27017,"test");
     public static DatabaseClient client = new DatabaseClient(databaseConfig);
+    public static ServerMonitor serverMonitor = new ServerMonitor(30,10);
+    public static CollectionMonitor restaurantsMonitor =  new CollectionMonitor(5,10,"restaurants");
 
     public static void main( String[] args ) throws IOException {
         System.out.println( "Hello World from backed!" );
 
-        Thread serverMonitor = new Thread(new ServerMonitor(30,10));
-        serverMonitor.start();
+        Thread serverMonitorT = new Thread(serverMonitor);
+        serverMonitorT.start();
 
-        Thread restaurantsMonitor = new Thread(new CollectionMonitor(5,10,"restaurants"));
-        restaurantsMonitor.start();
+        Thread restaurantsMonitorT = new Thread(restaurantsMonitor);
+        restaurantsMonitorT.start();
     }
 }

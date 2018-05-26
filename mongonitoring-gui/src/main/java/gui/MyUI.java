@@ -1,14 +1,15 @@
 package gui;
-import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
+import gui.monitoringViews.Chart;
 import monitoring.App;
+
+import javax.servlet.annotation.WebServlet;
 
 import static gui.Setup.setup;
 
@@ -37,7 +38,7 @@ public class MyUI extends UI {
         navigator = new Navigator(this, new Navigator.ComponentContainerViewDisplay(cc));
 
         navigator.addView("", new MainView(""));
-        navigator.addView("test1", new MainView("test1"));
+        navigator.addView("test1", new Chart());
         navigator.addView("test2", new MainView("test2"));
         menuManager = new MenuManager(navigator, cc );
 
@@ -54,6 +55,34 @@ public class MyUI extends UI {
         
         layout.addComponents(name, button);
         setContent(menuManager);
+//
+//        DataSeries dataSeries = new DataSeries()
+//                .add(2, 6, 7, 10);
+//
+//        SeriesDefaults seriesDefaults = new SeriesDefaults()
+//                .setRenderer(SeriesRenderers.BAR);
+//
+//        Axes axes = new Axes()
+//                .addAxis(
+//                        new XYaxis()
+//                                .setRenderer(AxisRenderers.CATEGORY)
+//                                .setTicks(
+//                                        new Ticks()
+//                                                .add("a", "b", "c", "d")));
+//
+//        Highlighter highlighter = new Highlighter()
+//                .setShow(false);
+//
+//        Options options = new Options()
+//                .setSeriesDefaults(seriesDefaults)
+//                .setAxes(axes)
+//                .setHighlighter(highlighter);
+//
+//        DCharts chart = new DCharts()
+//                .setDataSeries(dataSeries)
+//                .setOptions(options)
+//                .show();
+
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

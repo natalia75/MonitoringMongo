@@ -9,11 +9,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import monitoring.model.DateValuePair;
+import monitoring.model.Resource;
+import monitoring.model.ResourceGetter;
 import org.bson.Document;
 
 import static monitoring.App.databaseConfig;
 
-public class CollectionMonitor implements Runnable{
+public class CollectionMonitor implements AbstractMonitor, Runnable{
 
     int period;
     int historySize;
@@ -30,7 +36,7 @@ public class CollectionMonitor implements Runnable{
         client = new DatabaseClient(databaseConfig);
         lastCountersReadTime = new Date();
         counters = new ArrayList<>();
-        loadHistoryToFile();
+        loadHistoryFromFile();
     }
 
     private void getNewCounters(){
@@ -62,7 +68,14 @@ public class CollectionMonitor implements Runnable{
         }
     }
 
-    private void loadHistoryToFile(){
+    public <T> List<DateValuePair<T>> getHistoricalMoitoring(ResourceGetter<T> resource){
+        loadHistoryFromFile();
+        return counters.stream().map(
+            sc -> new DateValuePair<>(sc.getTimeStamp(), resource.get())
+        ).collect(Collectors.toList());
+    }
+
+    private void loadHistoryFromFile(){
         String historyString = "";
         try{
             BufferedReader reader = new BufferedReader(new FileReader(collectionName + ".JSON"));
@@ -95,6 +108,5 @@ public class CollectionMonitor implements Runnable{
             e.printStackTrace();
         }
     }
-
 
 }
